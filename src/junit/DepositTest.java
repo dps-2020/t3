@@ -27,7 +27,7 @@ public class DepositTest {
 	}
 
 	@Test
-	public void UpdateDeposit() {
+	public void updateDeposit() {
 		// Testing deposits update and calculate properly. UAT 3.1
 		Deposit newDeposit = new Deposit("O1001", "A1001", "100.00");
 		Account newAccount = new Account("O1001", "Checking", "50.00");
