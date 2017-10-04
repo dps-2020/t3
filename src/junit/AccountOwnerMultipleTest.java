@@ -1,4 +1,5 @@
 // Binu Jacob's code modification: pull, code change, commit and push  completed
+//We updated ownerOne/ownerTwo accounts - David/Joe/Ed 20170310
 
 package junit;
 
@@ -21,6 +22,7 @@ public class AccountOwnerMultipleTest {
 		dataBase.load();
 	}
 
+	
 	@Test
 	public void createTwoAccounts() {
 		AccountOwner ownerOne = new AccountOwner("ownerOne", "J$");
