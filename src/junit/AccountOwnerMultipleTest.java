@@ -35,13 +35,11 @@ public class AccountOwnerMultipleTest {
 
 		AccountOwner ownerTwo = new AccountOwner("ownerTwo", "J$");
 		ownerTwo.put();
+		Assert.assertEquals(ownerTwo.getId(), "O1002");
 
-		String ownerIdTwo = ownerTwo.getId();
-		Assert.assertEquals(ownerIdTwo, "O1002");
+		AccountOwner ownerTwoWrittenToDatabase = AccountOwner.get(ownerTwo.getId());
 
-		AccountOwner ownerTwoWrittenToDatabase = AccountOwner.get(ownerIdTwo);
-
-		Assert.assertEquals(ownerIdTwo, ownerTwoWrittenToDatabase.getId());
+		Assert.assertEquals(ownerTwo.getId(), ownerTwoWrittenToDatabase.getId());
 		Assert.assertEquals("ownerTwo", ownerTwoWrittenToDatabase.getName());
 		Assert.assertEquals("J$", ownerTwoWrittenToDatabase.getPassword());
 
