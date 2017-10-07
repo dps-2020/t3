@@ -14,7 +14,7 @@ public class AccountOwner implements Serializable {
 
 	String id;
 
-	public  AccountOwnerData data = new AccountOwnerData();
+	public  AccountOwnerData accountOwnerData = new AccountOwnerData();
 
 	public String getId() {
 		return (id);
@@ -61,8 +61,8 @@ public class AccountOwner implements Serializable {
 	}
 
 	public AccountOwner(String name, String password) {
-		this.data.password = password;
-		this.data.name = name;
+		this.accountOwnerData.password = password;
+		this.accountOwnerData.name = name;
 	}
 
 	public AccountOwner() {
@@ -79,7 +79,7 @@ public class AccountOwner implements Serializable {
 
 	public void put() {
 		setId(Database.getNextIdString(prefix));
-		database.put(Database.getNextIdString(prefix), data);
+		database.put(Database.getNextIdString(prefix), accountOwnerData);
 	}
 
 	public static AccountOwner get(String accountOwnerId) {
@@ -89,7 +89,7 @@ public class AccountOwner implements Serializable {
 			return (null);
 		}
 		AccountOwner accountOwner = new AccountOwner();
-		accountOwner.data = accountOwnerData;
+		accountOwner.accountOwnerData = accountOwnerData;
 		accountOwner.setId(accountOwnerId);
 		return (accountOwner);
 	}
@@ -104,11 +104,11 @@ public class AccountOwner implements Serializable {
 	}
 
 	public  String getName() {
-		return data.name;
+		return accountOwnerData.name;
 	}
 
 	public String getPassword() {
-		return data.password;
+		return accountOwnerData.password;
 	}
 
 	public void setId(String id) {
@@ -116,10 +116,10 @@ public class AccountOwner implements Serializable {
 	}
 
 	public void setName(String name) {
-		this.data.name = name;
+		this.accountOwnerData.name = name;
 	}
 
 	public void setPassword(String password) {
-		this.data.password = password;
+		this.accountOwnerData.password = password;
 	}
 }
