@@ -1,4 +1,10 @@
 // Binu Jacob's code modification: pull, code change, commit and push  completed
+<<<<<<< HEAD
+=======
+// We updated ownerOne/ownerTwo accounts - David/Joe/Ed 2017-10-03
+// Updated Expected vs Actual - David 2017-10-07
+
+>>>>>>> branch 'master' of https://github.com/dps-2020/t3.git
 
 package junit;
 
@@ -25,7 +31,7 @@ public class AccountOwnerMultipleTest {
 	public void createTwoAccounts() {
 		AccountOwner ownerOne = new AccountOwner("ownerOne", "J$");
 		ownerOne.put();
-		Assert.assertEquals(ownerOne.getId(), "O1001");
+		Assert.assertEquals("O1001",ownerOne.getId());
 
 		AccountOwner ownerOneWrittenToDatabase = AccountOwner.get(ownerOne.getId());
 
@@ -35,6 +41,10 @@ public class AccountOwnerMultipleTest {
 
 		AccountOwner ownerTwo = new AccountOwner("ownerTwo", "J$");
 		ownerTwo.put();
+<<<<<<< HEAD
+=======
+		Assert.assertEquals("O1002",ownerTwo.getId());
+>>>>>>> branch 'master' of https://github.com/dps-2020/t3.git
 
 		String ownerIdTwo = ownerTwo.getId();
 		Assert.assertEquals(ownerIdTwo, "O1002");

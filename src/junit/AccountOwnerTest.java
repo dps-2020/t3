@@ -75,8 +75,8 @@ public class AccountOwnerTest {
 		AccountOwner ownerWrittenToDatabase = AccountOwner.get(ownerId);
 
 		Assert.assertEquals(ownerId, ownerWrittenToDatabase.getId());
-		Assert.assertEquals("owner", ownerWrittenToDatabase.data.name);
-		Assert.assertEquals("J$", ownerWrittenToDatabase.data.password);
+		Assert.assertEquals("owner", ownerWrittenToDatabase.accountOwnerData.name);
+		Assert.assertEquals("J$", ownerWrittenToDatabase.accountOwnerData.password);
 
 	}
 	
