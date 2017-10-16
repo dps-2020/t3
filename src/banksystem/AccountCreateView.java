@@ -13,6 +13,7 @@ import java.awt.event.FocusEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -131,6 +132,7 @@ public class AccountCreateView extends JPanel {
 					if (result.equals("valid")) {
 						account.put();
 						accountIdLabel.setText(Account.getNextId());
+						JOptionPane.showMessageDialog(null, "Account Owner ID Created");
 					} else {
 					
 						errorMessageLabel.setText(result);
