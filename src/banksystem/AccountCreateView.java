@@ -49,6 +49,7 @@ public class AccountCreateView extends JPanel {
 	private JLabel accountIdLabel;
 	private JLabel errorMessageLabel;
 	private JTextField accountTypeTextField;
+	//private JLabel accountCreateLabel;
 
 	private JTextField openingBalanceTextField;
 
@@ -76,6 +77,17 @@ public class AccountCreateView extends JPanel {
 		accountIdLabel.setFont(new Font("Lucida Grande", Font.BOLD, 18));
 		accountIdLabel.setText("12345");
 		accountIdLabel.setBounds(204, 60, 61, 29);
+		
+		
+		//account create message code
+		/*
+		accountCreateLabel = new JLabel();
+		accountIdLabel.setFont(new Font("Lucida Grande", Font.BOLD, 18));
+		accountIdLabel.setText(" ");
+		accountIdLabel.setBounds(604, 60, 61, 29);
+		*/
+		//
+		
 		add(accountIdLabel);
 		accountIdLabel.setName("accountIdLabel");
 		labelForAccountId.setLabelFor(accountIdLabel);
@@ -132,7 +144,8 @@ public class AccountCreateView extends JPanel {
 					if (result.equals("valid")) {
 						account.put();
 						accountIdLabel.setText(Account.getNextId());
-						JOptionPane.showMessageDialog(null, "Account Owner ID Created");
+						//accountCreateLabel.setText("Account Owner ID Created");
+						//JOptionPane.showMessageDialog(null, "Account Owner ID Created");
 					} else {
 					
 						errorMessageLabel.setText(result);

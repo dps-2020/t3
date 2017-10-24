@@ -22,6 +22,7 @@ public class Transfer implements Serializable {
 		this.data.fromAccountId = fromAccountId;
 		this.data.toAccountId = toAccountId;
 		this.data.transferAmount = transferAmount;
+		
 	}
 
 	public Transfer() {
