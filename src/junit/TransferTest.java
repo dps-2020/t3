@@ -63,6 +63,7 @@ public class TransferTest  {
 	    Assert.assertEquals("100.00", Account.get(newTransfer.getToAccountId()).getBalance());
 	    Assert.assertEquals("0.00", Account.get(newTransfer.getFromAccountId()).getBalance());
 	    Assert.assertEquals(newTransfer.transfer("P$1111"), Transfer.get(newTransfer.getId()));
+	 
  }
  
  @Test

@@ -14,6 +14,7 @@ public class UtilitiesTest {
 
 	@Before
 	public void setUp() throws Exception {
+		Utilities Util = new Utilities ();
 	}
 
 	@After
