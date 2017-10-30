@@ -19,6 +19,7 @@ public class WithdrawalTest  {
 
  @Before
  public void setUp() throws Exception {
+  Withdrawal withdwl = new Withdrawal();
   Database.setFileName("test.dat");
   dataBase.eraseFile();
   dataBase.load();
@@ -27,11 +28,11 @@ public class WithdrawalTest  {
   AccountOwner newAccountOwner2 = new AccountOwner("Ann Singh", "P$2222");
   newAccountOwner2.put();
   
-  
   Account newAccount = new Account("O1001", "Checking", "50.00");
   newAccount.put();
   Account newAccount2 = new Account("O1001", "Savings", "50.00");
   newAccount2.put();
+
   Account newAccount3 = new Account("O1002", "Savings", "50.00");
   newAccount3.put();
   Account newAccount4 = new Account("O1002", "Checking", "250.00");
@@ -67,7 +68,7 @@ public class WithdrawalTest  {
 	    Assert.assertEquals("valid", newWithdrawal.updateBalance("P$2222"));
 	    newAccount4 = Account.get(newWithdrawal.getAccountId());
 	    Assert.assertEquals("49.75", newAccount4.getBalance());
-	    
+/*	    Assert.assertEquals(newWithdrawal.updateBalance("P$2222"), (Withdrawal.get(newWithdrawal.getId())).updateBalance("P$2222"));*/ 
  }
 
 /*
