@@ -68,7 +68,10 @@ public class WithdrawalTest  {
 	    Assert.assertEquals("valid", newWithdrawal.updateBalance("P$2222"));
 	    newAccount4 = Account.get(newWithdrawal.getAccountId());
 	    Assert.assertEquals("49.75", newAccount4.getBalance());
-/*	    Assert.assertEquals(newWithdrawal.updateBalance("P$2222"), (Withdrawal.get(newWithdrawal.getId())).updateBalance("P$2222"));*/ 
+	    newWithdrawal.setId("A1004");
+	    Assert.assertEquals("A1004", newWithdrawal.getId());
+ /* Assert.assertEquals(newWithdrawal.updateBalance("P$2222")), Withdrawal.getId())).updateBalance("P$2222")); */ 
+	    
  }
 
 /*
