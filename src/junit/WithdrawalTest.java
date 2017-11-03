@@ -77,6 +77,12 @@ public class WithdrawalTest  {
 	   
 	    Withdrawal newWithdrawal1 = new Withdrawal("O1002", "A1004", "5000.00");
 	    Assert.assertEquals("Withdrawal amount cannot be greater than balance", newWithdrawal1.validateWithdrawalAmount(newWithdrawal.getWithdrawalAmount()));
+	    Withdrawal newWithdrawal2 = new Withdrawal("O1002", "X1004", "5000.00");
+	    Assert.assertEquals("Invalid Account ID", newWithdrawal2.updateBalance("P$2222"));
+	    Withdrawal newWithdrawal3 = new Withdrawal("O1002", "A1004", " ");
+	    Assert.assertEquals("Withdrawal amount cannot be blank", newWithdrawal3.updateBalance("P$2222"));
+	    Withdrawal newWithdrawal4 = new Withdrawal("X1002", "A1004", " ");
+	    Assert.assertEquals("Invalid Account Owner ID", newWithdrawal4.updateBalance("P$2222"));
  }
 
 /*
