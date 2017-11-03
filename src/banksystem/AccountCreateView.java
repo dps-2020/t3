@@ -13,7 +13,6 @@ import java.awt.event.FocusEvent;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
@@ -22,7 +21,6 @@ import database.Database;
 
 public class AccountCreateView extends JPanel {
 
-	
 	private static final long serialVersionUID = 1L;
 	Database database = Database.getInstance();
 
@@ -77,16 +75,6 @@ public class AccountCreateView extends JPanel {
 		accountIdLabel.setFont(new Font("Lucida Grande", Font.BOLD, 18));
 		accountIdLabel.setText("12345");
 		accountIdLabel.setBounds(204, 60, 61, 29);
-		
-		
-		//account create message code
-		/*
-		accountCreateLabel = new JLabel();
-		accountIdLabel.setFont(new Font("Lucida Grande", Font.BOLD, 18));
-		accountIdLabel.setText(" ");
-		accountIdLabel.setBounds(604, 60, 61, 29);
-		*/
-		//
 		
 		add(accountIdLabel);
 		accountIdLabel.setName("accountIdLabel");
