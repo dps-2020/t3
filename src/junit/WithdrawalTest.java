@@ -54,6 +54,7 @@ public class WithdrawalTest  {
 	 	
 	    Assert.assertEquals("Invalid Password", newWithdrawal.updateBalance("P@1234"));
 	    Assert.assertEquals("valid", newWithdrawal.validateWithdrawalAmount(newWithdrawal.getWithdrawalAmount()));
+	  
 	    Assert.assertEquals("valid", newWithdrawal.updateBalance("P$2222"));
 	    Account newAccount4 = Account.get(newWithdrawal.getAccountId());
 	    Assert.assertEquals("200.00", newAccount4.getBalance());
@@ -74,10 +75,11 @@ public class WithdrawalTest  {
 	    newWithdrawal.setId("A1004");
 	    Assert.assertEquals("A1004", newWithdrawal.getId());
 	   
-	    
+	    Withdrawal newWithdrawal1 = new Withdrawal("O1002", "A1004", "5000.00");
+	    Assert.assertEquals("Withdrawal amount cannot be greater than balance", newWithdrawal1.validateWithdrawalAmount(newWithdrawal.getWithdrawalAmount()));
  }
 
-
+/*
  @Test
  public void WithdrawalNotNegative() { 
 	 //Testing withdrawals do not contain a negative amount. UAT 5.2
@@ -147,5 +149,5 @@ public class WithdrawalTest  {
 	 Assert.assertEquals("valid", withdrawal1.validateWithdrawalAmount(withdrawal1.getWithdrawalAmount()));
 }
   
- 
+ */
 }//End DepositTest
