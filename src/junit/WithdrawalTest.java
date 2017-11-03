@@ -19,7 +19,7 @@ public class WithdrawalTest  {
 
  @Before
  public void setUp() throws Exception {
-  Withdrawal withdwl = new Withdrawal();
+ // Withdrawal withdwl = new Withdrawal();
   Database.setFileName("test.dat");
   dataBase.eraseFile();
   dataBase.load();
@@ -77,7 +77,7 @@ public class WithdrawalTest  {
 	    
  }
 
-/*
+
  @Test
  public void WithdrawalNotNegative() { 
 	 //Testing withdrawals do not contain a negative amount. UAT 5.2
@@ -147,5 +147,5 @@ public class WithdrawalTest  {
 	 Assert.assertEquals("valid", withdrawal1.validateWithdrawalAmount(withdrawal1.getWithdrawalAmount()));
 }
   
- */
+ 
 }//End DepositTest
