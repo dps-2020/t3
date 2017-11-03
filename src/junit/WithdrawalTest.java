@@ -51,7 +51,9 @@ public class WithdrawalTest  {
 	    //Testing proper password and withdrawal amount updates account to correct new balance. UAT 5.1, 5.3 & 5.4
 	 		    
 	 	Withdrawal newWithdrawal = new Withdrawal("O1002", "A1004", "50.00");
+	 	
 	    Assert.assertEquals("Invalid Password", newWithdrawal.updateBalance("P@1234"));
+	    Assert.assertEquals("valid", newWithdrawal.validateWithdrawalAmount(newWithdrawal.getWithdrawalAmount()));
 	    Assert.assertEquals("valid", newWithdrawal.updateBalance("P$2222"));
 	    Account newAccount4 = Account.get(newWithdrawal.getAccountId());
 	    Assert.assertEquals("200.00", newAccount4.getBalance());
@@ -65,11 +67,13 @@ public class WithdrawalTest  {
 	    
 	    
 	    newWithdrawal = new Withdrawal("O1002", "A1004", "50.25");
+	  //  Assert.assertEquals(newWithdrawal.getOwnerId(), Withdrawal.get("A1004").getOwnerId());
 	    Assert.assertEquals("valid", newWithdrawal.updateBalance("P$2222"));
 	    newAccount4 = Account.get(newWithdrawal.getAccountId());
 	    Assert.assertEquals("49.75", newAccount4.getBalance());
 	    newWithdrawal.setId("A1004");
 	    Assert.assertEquals("A1004", newWithdrawal.getId());
+	   
 	    
  }
 
