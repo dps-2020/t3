@@ -83,6 +83,8 @@ public class WithdrawalTest  {
 	    Assert.assertEquals("Withdrawal amount cannot be blank", newWithdrawal3.updateBalance("P$2222"));
 	    Withdrawal newWithdrawal4 = new Withdrawal("X1002", "A1004", " ");
 	    Assert.assertEquals("Invalid Account Owner ID", newWithdrawal4.updateBalance("P$2222"));
+	    Withdrawal newWithdrawal5 = new Withdrawal("O1002", "A1004", "10");
+	    Assert.assertEquals("Invalid Password", newWithdrawal5.updateBalance("P$2223"));
  }
 
 /*
