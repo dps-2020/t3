@@ -22,15 +22,7 @@ public class Withdrawal implements Serializable {
 		this.data.withdrawalAmount = withdrawalAmount;
 	}
 
-	public Withdrawal() { }
-	
-
-	public String getOwnerId() {
-		return data.ownerId;
-	}
-
-	public void setOwnerId(String ownerId) {
-		this.data.ownerId = ownerId;
+	public Withdrawal() {
 	}
 
 	public String getAccountId() {
@@ -49,9 +41,6 @@ public class Withdrawal implements Serializable {
 		this.data.withdrawalAmount = withdrawalAmount;
 	}
 
-	public String getId() {
-		return id;
-	}
 
 	public void setId(String id) {
 		this.id = id;
@@ -59,10 +48,6 @@ public class Withdrawal implements Serializable {
 
 	public static String getNextId() {
 		return (Database.getNextIdString(prefix));
-	}
-
-	public Integer getIdAsInt() {
-		return (Database.getNextIdInt(prefix));
 	}
 
 	public void put() {
@@ -80,6 +65,7 @@ public class Withdrawal implements Serializable {
 		withdrawal.setId(withdrawalId);
 		return (withdrawal);
 	}
+
 	public String validateWithdrawalAmount(String withdrawalAmount) {
 		if (withdrawalAmount.equals(""))
 			return ("Withdrawal amount cannot be empty");
@@ -88,15 +74,17 @@ public class Withdrawal implements Serializable {
 		if (Utilities.isNegative(withdrawalAmount))
 			return ("Withdrawal amount cannot be negative");
 		if (!Utilities.isNumeric(withdrawalAmount)) {
-		 	return ("Withdrawal amount must be numeric");}
+			return ("Withdrawal amount must be numeric");
+		}
 		if (!Utilities.isMoney(withdrawalAmount)) {
-			return ("Amount must be dollars and cents");}
+			return ("Amount must be dollars and cents");
+		}
 		long cents = 0;
 		cents = Utilities.toCents(withdrawalAmount);
-	 	if ((cents) == 0)
-		    return ("Withdrawal amount cannot be zero");
-	 	Account newAccount = Account.get(this.data.accountId);
-	 	long centsWithdrawalAmount = 0;
+		if ((cents) == 0)
+			return ("Withdrawal amount cannot be zero");
+		Account newAccount = Account.get(this.data.accountId);
+		long centsWithdrawalAmount = 0;
 		long centsBalance = 0;
 		centsWithdrawalAmount = Utilities.toCents(withdrawalAmount);
 		centsBalance = Utilities.toCents(newAccount.getBalance());
@@ -104,51 +92,37 @@ public class Withdrawal implements Serializable {
 		System.out.println("The value of withdrawal is: " + centsWithdrawalAmount);
 		if (centsWithdrawalAmount > centsBalance)
 			return ("Withdrawal amount cannot be greater than balance");
-		
+
 		return ("valid");
 	}
 
 	public String validate(String password) {
-		// TODO:
-		return ("String validate(String password)");
-	}
-
-	public static String validate(String ownerId, String accountId, String password, String withdrawalAmount) {
-		// TODO:
-		return ("String validate(String ownerId, String accountId, String password, String withdrawalAmount) ");
+		return (PasswordManager.validate(password));
 	}
 
 	public String updateBalance(String password) {
 		AccountOwner newAccountOwner = AccountOwner.get(this.data.ownerId);
-		System.out.println ( this.data.ownerId + " " +  newAccountOwner );
-		if (AccountOwner.validateOwnerId(this.data.ownerId).equals("valid"))
-			if (PasswordManager.authenticate(password, newAccountOwner.getPassword()) == "valid")
-			{
-				if (Account.validateAccountExists(this.data.accountId).equals("valid"))
-				{
+		System.out.println(this.data.ownerId + " " + newAccountOwner);
+		if (AccountOwner.validateOwnerId(this.data.ownerId).equals("valid")) {
+			if (PasswordManager.authenticate(password, newAccountOwner.getPassword()) == "valid") {
+				if (Account.validateAccountExists(this.data.accountId).equals("valid")) {
 					Account newAccount = Account.get(this.data.accountId);
-					if (newAccount.getOwnerId().equals(this.data.ownerId))
-					{
-						if (validateWithdrawalAmount(this.data.withdrawalAmount).equals("valid"))
-						{
+					if (newAccount.getOwnerId().equals(this.data.ownerId)) {
+						if (validateWithdrawalAmount(this.data.withdrawalAmount).equals("valid")) {
 							newAccount.subtract(this.data.withdrawalAmount);
 							newAccount.put();
 							return ("valid");
-						}
-						else
+						} else
 							return (validateWithdrawalAmount(this.data.withdrawalAmount));
-					}
-					else
-						return ("Invalid Account ID");						
-				}
-				else
+					} else
+						return ("Invalid Account ID");
+				} else
 					return (Account.validateAccountExists(this.data.accountId));
-			}
-			else
+			} else
 				return (AccountOwner.authenticate(password, this.data.ownerId));
-		else
+		} else {
 			return (AccountOwner.validateOwnerId(this.data.ownerId));
+		}
 	}
-	
+
 }
-	
